@@ -1,0 +1,66 @@
+"preview" <- function(formula, data, start, variable=1){
+
+	"formula2function"<-function(formu){
+		arg1		<- all.vars(formu)
+		arg2		<- vector("list",length(arg1))
+		names(arg2)	<- arg1
+		Args		<- do.call("alist",arg2)
+		fmodele		<- as.function(c(Args,formu))
+		return(fmodele)
+	}
+
+	f1 <- formula2function(formula(formula)[[3]])
+	vardep <- all.vars(formula[[2]])
+	varindep <- intersect(all.vars(formula[[3]]), colnames(data))
+	predic <- do.call(f1, as.list(c(start, data[varindep])))
+	rss1 <- signif(sum((predic-data[vardep])^2), 3)
+
+	plot(data[c(variable, which(colnames(data)==vardep))], ylab="Predicted", main="", ylim=c(min(data[vardep],predic), max(data[vardep],predic)))
+	points(cbind.data.frame(data[variable], predic), pch="+", col="red")
+	cat("\nRSS: ", rss1,"\n")
+
+}
+
+"plotfit" <- function(x, smooth=FALSE, variable=1){
+	if (!inherits(x, "nls"))
+		stop("Use only with 'nls' objects")
+	d	<- eval(x$call$data, sys.frame(0))
+	vardep <- all.vars(formula(x)[[2]])
+	varindep <- intersect(all.vars(formula(x)[[3]]), colnames(d))
+	if (smooth & length(varindep)!=1) 
+        	stop("smooth option is only possible when the number of independent variables equals 1")
+	if(smooth | smooth=="T"){
+        w0 <- list(seq(min(d[,varindep]), max(d[,varindep]), len=1000))
+		names(w0) <- varindep
+		plot(d[c(varindep, vardep)], xlab=varindep, ylab=vardep)
+		lines(w0[[1]], predict(x,new=w0), col="red")        		
+	}
+	else{
+		plot(d[,vardep]~d[,variable], xlab=names(d)[variable], ylab=vardep)
+		points(d[,variable], predict(x), pch="+", col="red")
+	}
+}
+
+"overview" <- function(x){
+	if (!inherits(x, "nls"))
+		stop("Use only with 'nls' objects")
+	cat("\n------")
+	print(summary(x))
+	cat("------\n")
+	cat("Residual sum of squares:", signif(sum(residuals(x)^2), 3),"\n\n")
+	n <- length(residuals(x))
+	np <- length(coef(x))
+	esti <- summary(x)$parameters[,"Estimate"]
+	ster <- summary(x)$parameters[,"Std. Error"]
+	t95 <- qt(0.975, df=(n-np))
+	binf <- esti - t95 * ster
+	bsup <- esti + t95 * ster
+	cat("------\n")
+	cat("Asymptotic confidence interval:\n")
+	print(cbind.data.frame("2.5%" = binf, "97.5%" = bsup))
+	cat("\n")
+	cat("------\n")
+	cat("Correlation matrix:\n")
+	print(summary(x, correlation = TRUE)$correlation)
+	cat("\n")
+}
