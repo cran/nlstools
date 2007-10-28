@@ -12,8 +12,8 @@
 
 \usage{
 nlsConfRegions (nls, length = 1000, exp = 1.5)
-plot.nlsConfRegions (x, bounds = FALSE, ask = FALSE, ...)
-print.nlsConfRegions (x, ...)
+\method{plot}{nlsConfRegions} (x, bounds = FALSE, ask = FALSE, \dots)
+\method{print}{nlsConfRegions} (x, \dots)
 }
 
 %- maybe also 'usage' for other objects documented here.

@@ -10,9 +10,9 @@
   }
 \usage{
 nlsJack (nls)
-plot.nlsJack (x, mfr = c(nrow(x$reldif),1), ask = FALSE, ...)
-print.nlsJack (x, ...)
-summary.nlsJack (object, ...)
+\method{plot}{nlsJack} (x, mfr = c(nrow(x$reldif),1), ask = FALSE, \dots)
+\method{print}{nlsJack} (x, \dots)
+\method{summary}{nlsJack} (object, \dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{

@@ -1,3 +1,7 @@
+2007-10-28 14:52 baty
+
+	* *.Rd: changed the \usage entries for S3 methods using the \method markup
+
 2007-06-22 23:27 baty
 
 	* *.Rd: improved the overall documentation

@@ -13,12 +13,12 @@ Bootstrap resampling
 
 \usage{
 nlsBoot (nls, niter = 999)
-plot.nlsBoot (x, type = c("pairs", "boxplot"), 
+\method{plot}{nlsBoot} (x, type = c("pairs", "boxplot"), 
 	mfr = c(ceiling(sqrt(ncol(x$coefboot))), 
 	ceiling(sqrt(ncol(x$coefboot)))), 
-	ask = FALSE, ...)
-print.nlsBoot (x, ...)
-summary.nlsBoot (object, ...)
+	ask = FALSE, \dots)
+\method{print}{nlsBoot} (x, \dots)
+\method{summary}{nlsBoot} (object, \dots)
 }
 
 %- maybe also 'usage' for other objects documented here.

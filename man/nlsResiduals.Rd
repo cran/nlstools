@@ -16,12 +16,12 @@
 
 \usage{
 nlsResiduals (nls)
-plot.nlsResiduals (x, type = 0, ...)
-boxplot.nlsResiduals (x, ...)
-hist.nlsResiduals (x, ...)
+\method{plot}{nlsResiduals} (x, type = 0, \dots)
+\method{boxplot}{nlsResiduals} (x, \dots)
+\method{hist}{nlsResiduals} (x, \dots)
 qq.nlsResiduals (x)
 test.nlsResiduals (x)
-print.nlsResiduals (x, ...)
+\method{print}{nlsResiduals} (x, \dots)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
