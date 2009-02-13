@@ -31,7 +31,6 @@
 	while(nrow(tab)<length){
 		tirage <- apply(bornes, 1, function(z) runif(n=1, min=z[1], max=z[2]))
 		listparavar	<- c(tirage, data[varindep])
-		#print(listparavar)
 		predict	<- do.call("fmodele", listparavar)
 		rss1	<- sum((predict-data[,vardep])^2)
 		if(rss1 < scer95){

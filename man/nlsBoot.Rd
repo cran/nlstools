@@ -34,7 +34,7 @@ nlsBoot (nls, niter = 999)
 }
 
 \details{
-	Non-parametric bootstraping is used. Mean centered residuals are bootstraped. By default, 999 resampled data sets are created from which a bootstrap sample of estimates is built by fitting the model on each of these data sets. The function \code{summary} returns the bootstrap estimates and the 95 percent confidence intervals which are simply defined by the median and the 2.5 and 97.5 percentiles of the bootstrap sample of estimates. The bootstrap estimates distributions can be visualized using the function \code{plot.nlsBoot} either by plotting the bootstrap sample for each pair of parameters or by displaying the boxplot representation of the bootstrap sample for each parameter.
+	Non-parametric bootstrapping is used. Mean centered residuals are bootstrapped. By default, 999 resampled data sets are created from which bootstrap estimates are obtained by fitting the model on each of these data sets. Whenever the fit fails to converge, a flag reports the number of non-convergences. If the fitting procedure fails to converge in more than 50\% of the cases, the procedure is interrupted with a flag and no result is given. The function \code{summary} returns the bootstrap estimates and the 95 percent confidence intervals which are simply defined by the median and the 2.5 and 97.5 percentiles of the bootstrap sample of estimates. The bootstrap estimates distributions can be visualized using the function \code{plot.nlsBoot} either by plotting the bootstrap sample for each pair of parameters or by displaying the boxplot representation of the bootstrap sample for each parameter. Notice that \code{nlsBoot} does not currently handle transformed dependent variables specified in the left side of the \code{nls} formula.  
 }
 
 \value{ 
@@ -57,9 +57,8 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
 %\note{  }
 
 \examples{
-data(growthcurve)
-bacterialKinetics <- growthcurve$df4
-nls1 <- nls(gompertzm, bacterialKinetics, 
+data(growthcurve4)
+nls1 <- nls(gompertzm, growthcurve4, 
 	list(lag = 10, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
 boo <- nlsBoot(nls1)
 plot(boo)

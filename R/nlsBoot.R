@@ -1,44 +1,33 @@
 "nlsBoot"<-function(nls, niter=999){
+
 	if (!inherits(nls, "nls"))
 		stop("Use only with 'nls' objects")
 
-	c1		<- nls$call
-	data	<- eval(c1$data, sys.frame(0))
-	c1$start <- as.list(coef(nls))
-	np		<- length(coef(nls))
-	tabboot	<- matrix(nrow=0,ncol=np)
-	rseboot	<- vector()
-	var1	<- all.vars(formula(nls)[[2]])
-	cat("  ")
-
-	for(i in 1:niter){
-		tenth	<-floor(100*nrow(tabboot)/niter)
-
-		data2		<- data
-		data2[,var1]	<- as.vector(fitted(nls) + sample((resid(nls)-mean(resid(nls))), replace=TRUE))
-		c1$data		<- data2
-		nls2		<- eval(c1)
-		tabboot		<- rbind(tabboot, coef(nls2))
-		rseboot		<- c(rseboot, summary(nls2)$sigma)
-
-		if(tenth!=floor(100*nrow(tabboot)/niter)){
-				if(tenth<11){cat("\b\b",tenth,"%",sep="")}
-				else{cat("\b\b\b",tenth,"%",sep="")}
-			}
-
-	}
+	data2 <- eval(nls$data, sys.frame(0))
+	fitted1 <- fitted(nls)
+	resid1 <- resid(nls)
+	var1 <- all.vars(formula(nls)[[2]])
 	
-	cat("\b\b\b100%\a")
-	cat("\n Bootstrap procedure finished \n")
-	invisible(tabboot)
+	l1 <- lapply(1:niter, function(i){
+		data2[,var1] <- fitted1 + sample(scale(resid1, scale=FALSE), replace=TRUE);
+		nls2 <- try(update(nls, start=as.list(coef(nls)), data=data2), silent=TRUE);
+		if(inherits(nls2, "nls"))
+			return(list(coef=coef(nls2), rse=summary(nls2)$sigma))
+		})
 
-	recapboot <- cbind(apply(tabboot,2,median),apply(tabboot,2,quantile,0.025),apply(tabboot,2,quantile,0.975))
-	colnames(recapboot) <- c("Median","2.5%","97.5%")
+	if(sum(sapply(l1, is.null)) > niter/2) stop(paste("Procedure aborted: the fit only converged in", round(sum(sapply(l1, is.null))/niter), "% during bootstrapping"))
+
+	tabboot <- sapply(l1[!sapply(l1, is.null)], function(z) z$coef)
+	rseboot <- sapply(l1[!sapply(l1, is.null)], function(z) z$rse)
+	recapboot <- t(apply(tabboot, 1, quantile, c(.5, .025, .75))); colnames(recapboot) <- c("Median","2.5%","97.5%")
+
+	serr <- sum(sapply(l1, is.null))
+	if(serr > 0) warning(paste("The fit did not converge", serr, "times during bootstrapping"))
 	
-	listboot	<-list(coefboot=tabboot, rse=rseboot, bootCI=recapboot)
+	listboot <- list(coefboot=t(tabboot), rse=rseboot, bootCI=recapboot)
 	class(listboot) <- "nlsBoot"
 	return(listboot)
-
+	
 }
 
 

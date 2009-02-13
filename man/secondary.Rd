@@ -108,7 +108,7 @@ overview(nls5)
 
 # Examples for the cpm_T_pH_aw model
 
-d6<-subset(ross, select = c(T, pH, aw, sqrtmumax))
+d6 <- subset(ross, select = c(T, pH, aw, sqrtmumax))
 nls6 <- nls(cpm_T_pH_aw, d6, list(muopt = 2, Tmin = 4, Topt = 40, Tmax = 49, 
 	pHmin = 4, pHopt = 6.5, pHmax = 9, awmin = 0.95, awopt = 0.995))
 def.par <- par(no.readonly = TRUE)

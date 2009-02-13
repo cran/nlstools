@@ -2,52 +2,33 @@
 	if (!inherits(nls, "nls"))
 		stop("Use only with 'nls' objects")
 
-	c1		<- nls$call
-	data	<- eval(c1$data, sys.frame(0))
+	c1 <- nls$call
+	data <- eval(c1$data, sys.frame(0))
 	c1$start <- as.list(coef(nls))
-	nl	<- nrow(data)
-	np	<- length(coef(nls))
-	tabjack	<- matrix(nrow=0,ncol=np)
-	rsejack	<- vector()
-	rssjack <- vector()
-	dfb <- matrix(ncol=np,nrow=0)
-	for(i in 1:nl){
-		data2	<- data[-i,]
- 		c1$data <- data2
-		nls2	<- eval(c1)
-		tabjack	<- rbind(tabjack, coef(nls2))
-		rsejack	<- c(rsejack, summary(nls2)$sigma)
-		rssjack <- c(rssjack, sum(residuals(nls2)^2))
-		dfb	<- rbind(dfb, abs(coef(nls2)-coef(nls))/(summary(nls)$parameters[,2]))
-	}
+	nl <- nrow(data)
+	np <- length(coef(nls))
+	
+	l1 <- lapply(1:nl, function(z){
+		nls2 <- update(nls, data=data[-z,], start=as.list(coef(nls)));
+		return(list(coef=coef(nls2), sigma=summary(nls2)$sigma, rss=sum(residuals(nls2)^2), dfb=abs(coef(nls2)-coef(nls))/(summary(nls)$parameters[,2])))
+	})
+
+	tabjack <- t(sapply(l1, function(z) z$coef))
+	rsejack <- sapply(l1, function(z) z$sigma)
+	rssjack <- sapply(l1, function(z) z$rss)
+	dfb <- t(sapply(l1, function(z) z$dfb))
 	reldif	<- apply(tabjack, 1, function(x) 100*abs(x-coef(nls))/coef(nls))
-
-	pseudo <- matrix(ncol=np, nrow=0)
-	sum1 <- 0
-	ICjack <- matrix(ncol=2, nrow=0)
-
-	for(i in 1:nl){
-		pseudo <- rbind(pseudo, nl*coef(nls)-(nl-1)*tabjack[i,])
-	}
-	estijack<-(1/nl)*colSums(pseudo)
-	for(i in 1:nl){
-		sum1<-sum1+(as.matrix(pseudo[i,]-estijack)%*%t(as.matrix(pseudo[i,]-estijack)))
-	}
-	varjack<-(1/(nl*(nl-1)))*sum1
-	student95<-qt(0.975,df=nl-np)
-	for(i in 1:np){
-		ICjack<-rbind(ICjack, c(estijack[i]-student95*sqrt(varjack[i,i]), estijack[i]+student95*sqrt(varjack[i,i])))
-	}
-	ICjack		 <- cbind(estijack, ICjack)
-	colnames(ICjack) <- c("Esti", "Low", "Up")
-	rownames(ICjack) <- names(coef(nls))
-
+	pseudo <- t(apply((nl-1) * tabjack, 1, function(z) nl * coef(nls) - z))
+	estijack <- colSums(pseudo) / nl
+	sum1 <- crossprod(t(t(pseudo) - estijack))
+	varjack <- (1 / (nl * (nl - 1))) * sum1
+	student95 <- qt(0.975, df = nl - np)
+	ICjack <- cbind.data.frame(Esti = estijack, Low = estijack - student95 * sqrt(diag(varjack)), Up = estijack + student95 * sqrt(diag(varjack)))
 
 	listjack	<-list(estijack=estijack, coefjack=tabjack, reldif=reldif, rse=rsejack, rss=rssjack ,dfb=dfb, jackCI=ICjack)
 	class(listjack) <- "nlsJack"
 	return(listjack)
 }
-
 
 "plot.nlsJack"<-function(x, mfr=c(nrow(x$reldif),1), ask=FALSE, ...){
 	if (!inherits(x, "nlsJack"))

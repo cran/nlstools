@@ -1,9 +1,9 @@
 \name{nlsResiduals}
 \alias{nlsResiduals}
 \alias{plot.nlsResiduals}
-\alias{boxplot.nlsResiduals}
-\alias{hist.nlsResiduals}
-\alias{qq.nlsResiduals}
+%\alias{boxplot.nlsResiduals}
+%\alias{hist.nlsResiduals}
+%\alias{qq.nlsResiduals}
 \alias{test.nlsResiduals}
 \alias{print.nlsResiduals}
 %- Also NEED an '\alias' for EACH other topic documented here.
@@ -16,10 +16,10 @@
 
 \usage{
 nlsResiduals (nls)
-\method{plot}{nlsResiduals} (x, type = 0, \dots)
-\method{boxplot}{nlsResiduals} (x, \dots)
-\method{hist}{nlsResiduals} (x, \dots)
-qq.nlsResiduals (x)
+\method{plot}{nlsResiduals} (x, which = 0, \dots)
+%\method{boxplot}{nlsResiduals} (x, \dots)
+%\method{hist}{nlsResiduals} (x, \dots)
+%qq.nlsResiduals (x)
 test.nlsResiduals (x)
 \method{print}{nlsResiduals} (x, \dots)
 }
@@ -27,20 +27,20 @@ test.nlsResiduals (x)
 \arguments{
 	\item{nls}{ an object of class 'nls'  }  
 	\item{x}{ an object of class 'nlsResiduals' }
-	\item{type}{ an integer: \cr
-		0 = 4 graphs of residuals (see type 1-4) \cr
+	\item{which}{ an integer: \cr
+		0 = 4 graphs of residuals (types 1, 2, 4 and 6) \cr
 		1 = non-transformed residuals against fitted values \cr 
 		2 = standardized residuals against fitted values \cr
 		3 = sqrt of absolute value of standardized residuals against fitted values \cr 
-		4 = auto-correlation residuals (i+1th residual against ith residual) } 
+		4 = auto-correlation residuals (i+1th residual against ith residual) \cr 
+		5 = histogram of the residuals  \cr
+		6 = qq-plot of the residuals } 
 	\item{...}{ further arguments passed to or from other methods }
 }
 \details{
 
 Several plots and tests are proposed to check the validity of the assumptions of the error model based on the analysis of residuals.\cr
-The function \code{plot.nlsResiduals} proposes several plots of residuals from the nonlinear fit: plot of non-transformed residuals against fitted values, plot of standardized residuals against fitted values, plot of square root of absolute value of standardized residuals against fitted values, auto-correlation plot of residuals (i+1th residual against ith residual).\cr
-\code{boxplot.nlsResiduals} and \code{hist.nlsResiduals} return respectively a box plot and a histogram of the non-transformed residuals.\cr
-\code{qq.nlsResiduals} returns a normal Q-Q plot of standardized residuals.\cr
+The function \code{plot.nlsResiduals} proposes several plots of residuals from the nonlinear fit: plot of non-transformed residuals against fitted values, plot of standardized residuals against fitted values, plot of square root of absolute value of standardized residuals against fitted values, auto-correlation plot of residuals (i+1th residual against ith residual), histogram of the non-transformed residuals and normal Q-Q plot of standardized residuals.\cr
 \code{test.nlsResiduals} tests the normality of the residuals with the Shapiro-Wilk test (shapiro.test in package stats) and the randomness of residuals  with the runs test (Siegel and Castellan, 1988). The runs.test function used in \code{nlstools} is the one implemented in the package \code{tseries}.
 
 }
@@ -68,17 +68,15 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
 
 \examples{
 # Plots of residuals
-data(growthcurve)
-bacterialKinetics <- growthcurve$df4
-nls1 <- nls(gompertzm, bacterialKinetics,
+data(growthcurve4)
+nls1 <- nls(gompertzm, growthcurve4,
 	list(lag = 10,mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
 nr <- nlsResiduals(nls1)
-plot(nr, type = 0)
+plot(nr, which = 0)
 
-# Histogram, box plot and qq-plot
-hist(nr)
-boxplot(nr)
-qq.nlsResiduals(nr)
+# Histogram and qq-plot
+plot(nr, which=5)
+plot(nr, which=6)
 	
 # Tests
 test.nlsResiduals(nr)

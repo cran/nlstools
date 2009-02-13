@@ -2,24 +2,24 @@
 	if (!inherits(nls, "nls"))
 		stop("Use only with 'nls' objects")
 
-	#Type 1 residuals
+	#which = 1 residuals
 	resi1		<- cbind(fitted(nls), residuals(nls))
 	colnames(resi1)	<- c("Fitted values", "Residuals")
 
-	#Type 2 residuals
+	#which = 2 residuals
 	ecartres	<- summary(nls)$sigma
 	nresiduals 	<- (residuals(nls)-mean(residuals(nls)))/ecartres
 	std95		<- qt(0.975,df=length(resid(nls))-length(coef(nls)))
 	resi2		<- cbind(fitted(nls), nresiduals)
 	colnames(resi2)	<- c("Fitted values", "Standardized residuals")
 
-	#Type 3 residuals
+	#which = 3 residuals
 	ecartres	<- summary(nls)$sigma
 	nresiduals	<- residuals(nls)/ecartres
 	resi3		<- cbind(fitted(nls), sqrt(abs(nresiduals)))
 	colnames(resi3)	<- c("Fitted values", "Sqrt abs. standardized residuals")
 
-	#Type 4 residuals
+	#which = 4 residuals
 	resiminus	<-vector()
 	resiplus	<-vector()
        	for(i in 1:(length(residuals(nls))-1)){
@@ -34,51 +34,21 @@
 	return(listresi)
 }
 
-"plot.nlsResiduals" <- function(x, type=0, ...){
-	if (!inherits(x, "nlsResiduals"))
-		stop("Use only with 'nlsResiduals' objects")
-	if(type != 0 & type != 1 & type != 2 & type != 3 & type != 4) 
-		stop("\n Expected 'type':\n 1 = un-transformed\n 2 = normed\n 3 = sqrt absolute normed\n 4 = auto-correlation\n")
-	if(type == 0){
-		def.par <- par(no.readonly = TRUE)
-        par(mfrow=c(2,2))
-        plot.nlsResiduals(x, type=1)
-        plot.nlsResiduals(x, type=2)
-        plot.nlsResiduals(x, type=3)
-        plot.nlsResiduals(x, type=4)
-        par(def.par)
-	}
-	if(type == 1){
-		plot(x$resi1, xlab="Fitted values", ylab="Residuals", main="Residuals")
-		abline(h=0, lty=2)
-	}
-	if(type == 2){
-		yrange	<- c(min(min(x$resi2[,2]), -x$std95), max(max(x$resi2[,2]), x$std95))
-		plot(x$resi2, xlab="Fitted values", ylab="Standardized residuals", ylim=yrange, main="Standardized Residuals")
-		abline(h=0,lty=2); abline(h=x$std95); abline(h=-x$std95)
-	}
-	if(type == 3){
-		plot(x$resi3, xlab="Fitted values", ylab=expression(sqrt(abs("Standardized residuals"))), main="Sqrt abs residuals")
-	}
-	if(type == 4){
-		plot(x$resi4, xlab="Residuals i", ylab="Residuals i+1", main="Autocorrelation")
-		abline(h=0, lty=2)
-	}
-}
+"plot.nlsResiduals" <- function(x, which=0, ...){
 
-"hist.nlsResiduals" <- function(x, ...){
+	"hist.nlsResiduals" <- function(x, ...){
 	if (!inherits(x, "nlsResiduals"))
 		stop("Use only with 'nlsResiduals' objects")
 	hist(x$resi1[,"Residuals"], main="Residuals", xlab="Residuals")
-}
+	}
 
-"boxplot.nlsResiduals" <- function(x, ...){
+	"boxplot.nlsResiduals" <- function(x, ...){
 	if (!inherits(x, "nlsResiduals"))
 		stop("Use only with 'nlsResiduals' objects")
 	boxplot(x$resi1[,"Residuals"], main="Residuals")
-}
+	}
 
-"qq.nlsResiduals" <- function(x){
+	"qq.nlsResiduals" <- function(x){
 	if (!inherits(x, "nlsResiduals"))
 		stop("Use only with 'nlsResiduals' objects")
 
@@ -89,10 +59,47 @@
 	slope	<- diff(qy)/diff(qx)
 	ori	<- qy[1]-slope*qx[1]     
 	
-	qqnorm(x$resi2[,2], main="Normal Q-Q Plot of Standardized Residuals")
+	qqnorm(x$resi2[,2], main="Normal Q-Q Plot of\n Standardized Residuals")
 	qqline(x$resi2[,2])
-	#text(min(qqplotx),max(qqploty),paste("y = ", signif(ori,3), "+", signif(slope,3), "x"), pos=4)
+	}
+
+	if (!inherits(x, "nlsResiduals"))
+		stop("Use only with 'nlsResiduals' objects")
+	if(!(which %in% 0:6)) 
+		stop("\n Expected 'which':\n 1 = un-transformed\n 2 = normed\n 3 = sqrt absolute normed\n 4 = auto-correlation\n 5 = histogram\n 6 = qq-plot")
+	if(which == 0){
+		def.par <- par(no.readonly = TRUE)
+        par(mfrow=c(2,2))
+        plot.nlsResiduals(x, which=1)
+        plot.nlsResiduals(x, which=2)
+        plot.nlsResiduals(x, which=4)
+        qq.nlsResiduals(x)
+        par(def.par)
+	}
+	if(which == 1){
+		plot(x$resi1, xlab="Fitted values", ylab="Residuals", main="Residuals")
+		abline(h=0, lty=2)
+	}
+	if(which == 2){
+		yrange	<- c(min(min(x$resi2[,2]), -x$std95), max(max(x$resi2[,2]), x$std95))
+		plot(x$resi2, xlab="Fitted values", ylab="Standardized residuals", ylim=yrange, main="Standardized Residuals")
+		abline(h=0,lty=2); abline(h=x$std95); abline(h=-x$std95)
+	}
+	if(which == 3){
+		plot(x$resi3, xlab="Fitted values", ylab=expression(sqrt(abs("Standardized residuals"))), main="Sqrt abs residuals")
+	}
+	if(which == 4){
+		plot(x$resi4, xlab="Residuals i", ylab="Residuals i+1", main="Autocorrelation")
+		abline(h=0, lty=2)
+	}
+	if(which == 5){
+		hist(x)
+	}
+	if(which == 6){
+		qq.nlsResiduals(x)
+	}
 }
+
 
 "test.nlsResiduals" <- function(x){
 	"runs.test" <- function (x, alternative = c("two.sided", "less", "greater")){

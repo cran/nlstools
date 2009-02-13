@@ -60,11 +60,9 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
 
 \examples{
 
-data(growthcurve)
-
 # Example 1
 
-growthcurve1 <- growthcurve$df1
+data(growthcurve1)
 nls1 <- nls(baranyi, growthcurve1,
 	list(lag=4, mumax=1, LOG10N0 = 4, LOG10Nmax = 9))
 nls2 <- nls(gompertzm,growthcurve1,
@@ -80,7 +78,7 @@ par(def.par)
 
 # Example 2
 
-growthcurve2 <- growthcurve$df2
+data(growthcurve2)
 nls4 <- nls(baranyi_without_Nmax, growthcurve2,
 	list(lag = 2, mumax = 0.4, LOG10N0 = 7.4))
 nls5 <- nls(buchanan_without_Nmax,growthcurve2,
@@ -93,7 +91,7 @@ par(def.par)
 
 # Example 3
 
-growthcurve3 <- growthcurve$df3
+data(growthcurve3)
 nls6 <- nls(baranyi_without_lag, growthcurve3,
 	list(mumax = 1, LOG10N0 = 0, LOG10Nmax = 5))
 nls7 <- nls(buchanan_without_lag, growthcurve3,

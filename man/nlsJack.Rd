@@ -50,9 +50,8 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
 %\note{  }
 
 \examples{
-data(growthcurve)
-bacterialKinetics <- growthcurve$df4
-nls1 <- nls(gompertzm, bacterialKinetics,
+data(growthcurve4)
+nls1 <- nls(gompertzm, growthcurve4,
 	list(lag = 10, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
 lj <- nlsJack(nls1)
 plot(lj)

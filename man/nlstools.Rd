@@ -25,7 +25,7 @@ overview (x)
 	\item{smooth}{ a logical value, default is FALSE. If smooth is TRUE, a plot of observed values is plotted as a function of 1000 values continuously taken in the range interval [min(variable),max(variable)]. This option can only be used if the number of controlled variables is 1. } 
 }
 \details{
-	The function \code{preview} helps defining the parameter starting values prior fitting the model. It provides a superimposed plot of observed (circles) and predicted (crosses) values of the dependent variable versus one of the independent variables with the model evaluated at the starting values of the parameters. The function \code{overview} returns the parameters estimates, their standard errors as well as their asymptotic confidence intervals and the correlation matrix. \code{plotfit} displays a superimposed plot of the dependent variable versus one the independent variables together with the fitted model.
+	The function \code{preview} helps defining the parameter starting values prior fitting the model. It provides a superimposed plot of observed (circles) and predicted (crosses) values of the dependent variable versus one of the independent variables with the model evaluated at the starting values of the parameters. The function \code{overview} returns the parameters estimates, their standard errors as well as their asymptotic confidence intervals and the correlation matrix (alternately, the function \code{confint} provides better confidence interval estimates whenever it converges). \code{plotfit} displays a superimposed plot of the dependent variable versus one the independent variables together with the fitted model.
 }
 
 %\value{ }
@@ -45,11 +45,10 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
 %\note{  }
 
 \examples{
-data(growthcurve)
-bacterialKinetics <- growthcurve$df4
-preview(gompertzm, bacterialKinetics, 
+data(growthcurve4)
+preview(gompertzm, growthcurve4, 
 	list(lag = 50, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 8.8))
-nls1 <- nls(gompertzm, bacterialKinetics,
+nls1 <- nls(gompertzm, growthcurve4,
 	list(lag = 10, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
 overview(nls1)
 plotfit(nls1, smooth = TRUE)
