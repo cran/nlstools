@@ -24,14 +24,12 @@
 	data	<- eval(nls$call$data, sys.frame(0))
 	np		<- length(coef(nls))
 	ncomb	<- choose(np, 2)
-	#nc		<- ncol(data)
 	vardep <- all.vars(formula(nls)[[2]])	
 	varindep <- intersect(all.vars(formula(nls)[[3]]), colnames(data))
 	nl		<- nrow(data)
 	fmodele		<- formula2function(formula(nls)[[3]])
 	estimates <- coef(nls)
 	lestimates <- as.list(estimates)
-	#scer		<- sum((fitted(nls)-data[,nc])^2)
 	scer <- sum(residuals(nls)^2)
 	scer95		<- scer * (1 + (np/(nl-np)) * qf(p=0.95, df1=np, df2=(nl-np), lower.tail=TRUE))
 	student95	<- qt(0.975, df=nl-np)
@@ -62,7 +60,7 @@
 }
 
 
-"plot.nlsContourRSS"<-function(x, nlev=0, col=TRUE, ask=FALSE, ...){
+"plot.nlsContourRSS"<-function(x, nlev=0, col=TRUE, col.pal=terrain.colors(100), ask=FALSE, ...){
 	if (!inherits(x, "nlsContourRSS"))
 		stop("Use only with 'nlsContourRSS' objects")
 
@@ -81,8 +79,8 @@
 	for(i in 1:(np-1))
 		for(j in (i+1):np){
 			count <- count + 1
-			if(col){				
-				image(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], col = terrain.colors(100), xlab=paranames[i], ylab=paranames[j])
+			if(col){
+				image(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], xlab=paranames[i], ylab=paranames[j], col=col.pal)
 				if(nlev>0) contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", nlevels=nlev, add=TRUE)
 				contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red", add=TRUE)
 			}

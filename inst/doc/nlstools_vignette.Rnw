@@ -123,11 +123,11 @@ The function \texttt{nlsContourRSS} provides sections of that confidence region 
 	The function \texttt{nlsContourRSS} enables to plot the Residual Sum of Squares (RSS) contours which also correspond to the likelihood contours for a Gaussian model. One of these contours, plotted in red, corresponds to the section of the 95 percent Beale's confidence region in each plane of two parameters. The argument \texttt{nlev} corresponds to the number of contours to be plotted, in addition to the red one.
 
 <<results=hide>>=
-contmaf<-nlsContourRSS(nlsmaf)
+contmaf <- nlsContourRSS(nlsmaf)
 @
 
 <<fig=TRUE>>=
-plot(contmaf,col=F,nlev=10)
+plot(contmaf, add.col=F, nlev=10)
 @
 
 \subsection{Projections of the 95 percent Beale's confidence region}
@@ -142,16 +142,16 @@ region in a reasonable time, as in the next example.
 	In this example, the function \texttt{nlsConfRegions} is first called with the argument \texttt{exp} fixed at 1, which corresponds to a hypercube delimited by the limits of the asymptotic confidence intervals of each parameter. The obtained region is then plotted, fixing the argument \texttt{bounds} at \texttt{TRUE} in order to visualize the sampling hypercube.
 	
 <<results=hide>>=
-rcmaf<-nlsConfRegions(nlsmaf,length=500,exp=1)
+rcmaf <- nlsConfRegions(nlsmaf, length=500, exp=1)
 @
 <<fig=TRUE>>=
-plot(rcmaf,bounds=T)
+plot(rcmaf, bounds=T)
 @
 
 	Since the whole region does not seem to be included in the sampling hypercube, the function \texttt{nlsConfRegions} is recalled with the argument \texttt{exp} fixed at 2.
 	
 <<results=hide>>=
-rcmaf<-nlsConfRegions(nlsmaf,length=500,exp=2)
+rcmaf <- nlsConfRegions(nlsmaf, length=500, exp=2)
 @
 
 <<fig=TRUE>>=
@@ -161,11 +161,11 @@ plot(rcmaf,bounds=T)
 	This value of the argument \texttt{exp} seems reasonable. The function \texttt{nlsConfRegions} may be recalled specifying a greater number of points drawn in the region (argument \texttt{length}), and the region may be plotted without showing the bounds of the hypercube.
 	
 <<results=hide>>=
-rcmaf<-nlsConfRegions(nlsmaf,length=2000,exp=2)
+rcmaf <- nlsConfRegions(nlsmaf, length=2000, exp=2)
 @
 
 <<fig=TRUE>>=
-plot(rcmaf,bounds=F)
+plot(rcmaf, bounds=F)
 @
 
 \subsection{Comparison of both representations of the confidence region}
@@ -173,7 +173,7 @@ plot(rcmaf,bounds=F)
 	It must be noticed that the representation of the confidence region in sections using \texttt{nlsContourRSS} does not give the same information as its representation by projections using \texttt{nlsConfRegions} when the number of parameters is greater than two. Sections of multidimensional (at least 3D) objects are smaller than projections and the representation of a confidence region in sections tends to underestimate its size in comparison to its representation by projections. The perception of structural correlations between parameters from graphical representation of the confidence region may also be very different between both representations. Let us see below such a difference with the previous example, for which both the section and the projection of the confidence region was plotted on the same plane.
 
 <<fig=TRUE,results=hide,echo=FALSE>>=
-plot(rcmaf$cr[,1],rcmaf$cr[,3],pch=16,xlab='p',ylab='LOG10N')
+plot(rcmaf$cr[,1], rcmaf$cr[,3], pch=16, xlab='p', ylab='LOG10N')
 contour(contmaf$seqPara[, 1], contmaf$seqPara[, 3], contmaf$lrss[[2]], 
                 labels = "", levels = contmaf$lrss95, lty = 1, col = "red",add=T,lwd=5)
 @
@@ -186,7 +186,7 @@ contour(contmaf$seqPara[, 1], contmaf$seqPara[, 3], contmaf$lrss[[2]],
 	The function \texttt{nlsJack} may be used to obtain, for a data set with $n$ observations, $n$ resampled data sets of $n-1$ observations and the $n$ corresponding new estimations for each parameter of the model. The jackknife estimates with confidence intervals are then calculated as described by Seber and Wild \cite{Seber}. 
 
 <<>>=
-jackmaf<-nlsJack(nlsmaf)
+jackmaf <- nlsJack(nlsmaf)
 @
 <<>>=
 summary(jackmaf)

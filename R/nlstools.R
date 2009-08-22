@@ -21,10 +21,10 @@
 
 }
 
-"plotfit" <- function(x, smooth=FALSE, variable=1){
+"plotfit" <- function(x, smooth=FALSE, variable=1, xlab=NULL, ylab=NULL, pch.obs=1, pch.fit="+", lty=1, lwd=1, col.obs="black", col.fit="red", ...){
 	if (!inherits(x, "nls"))
 		stop("Use only with 'nls' objects")
-	d	<- eval(x$call$data, sys.frame(0))
+	d <- eval(x$call$data, sys.frame(0))
 	vardep <- all.vars(formula(x)[[2]])
 	varindep <- intersect(all.vars(formula(x)[[3]]), colnames(d))
 	if (smooth & length(varindep)!=1) 
@@ -32,12 +32,16 @@
 	if(smooth | smooth=="T"){
         w0 <- list(seq(min(d[,varindep]), max(d[,varindep]), len=1000))
 		names(w0) <- varindep
-		plot(d[c(varindep, vardep)], xlab=varindep, ylab=vardep)
-		lines(w0[[1]], predict(x,new=w0), col="red")        		
+		if(is.null(xlab)) xlab <- varindep
+		if(is.null(ylab)) ylab <- vardep
+		plot(d[c(varindep, vardep)], xlab=xlab, ylab=ylab, pch=pch.obs, col=col.obs, ...)
+		lines(w0[[1]], predict(x,new=w0), col=col.fit, lty=lty, lwd=lwd)
 	}
 	else{
-		plot(d[,vardep]~d[,variable], xlab=names(d)[variable], ylab=vardep)
-		points(d[,variable], predict(x), pch="+", col="red")
+		if(is.null(xlab)) xlab <- names(d)[variable]
+		if(is.null(ylab)) ylab <- vardep
+		plot(d[,vardep]~d[,variable], xlab=xlab, ylab=ylab, pch=pch.obs, col=col.obs, ...)
+		points(d[,variable], predict(x), pch=pch.fit, col=col.fit)
 	}
 }
 

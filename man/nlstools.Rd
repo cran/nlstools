@@ -12,7 +12,7 @@ Tools to help the fit of nonlinear models with nls
 
 \usage{
 preview (formula, data, start, variable = 1)
-plotfit (x, smooth = FALSE, variable = 1)
+plotfit (x, smooth=FALSE, variable=1, xlab=NULL, ylab=NULL, pch.obs=1, pch.fit="+", lty=1, lwd=1, col.obs="black", col.fit="red", ...)
 overview (x)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -23,6 +23,16 @@ overview (x)
 	\item{variable}{ index of the variable to be plotted against the predicted values}
 	\item{x}{ an object of class 'nls' }
 	\item{smooth}{ a logical value, default is FALSE. If smooth is TRUE, a plot of observed values is plotted as a function of 1000 values continuously taken in the range interval [min(variable),max(variable)]. This option can only be used if the number of controlled variables is 1. } 
+	\item{xlab}{ X-label }
+	\item{ylab}{ Y-label }
+	\item{pch.obs}{ type of point of the observed values }
+	\item{pch.fit}{ type of point of the fitted values (not applicable if smooth=TRUE)}
+	\item{lty}{ type of line of the smoothed fitted values (if smooth=TRUE) }
+	\item{lwd}{ thickness of line of the smoothed fitted values (if smooth=TRUE) }
+	\item{col.obs}{ color of the observed points }
+	\item{col.fit}{ color of the fitted values }
+	\item{...}{ further arguments passed to or from other methods }
+
 }
 \details{
 	The function \code{preview} helps defining the parameter starting values prior fitting the model. It provides a superimposed plot of observed (circles) and predicted (crosses) values of the dependent variable versus one of the independent variables with the model evaluated at the starting values of the parameters. The function \code{overview} returns the parameters estimates, their standard errors as well as their asymptotic confidence intervals and the correlation matrix (alternately, the function \code{confint} provides better confidence interval estimates whenever it converges). \code{plotfit} displays a superimposed plot of the dependent variable versus one the independent variables together with the fitted model.

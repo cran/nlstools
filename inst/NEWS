@@ -1,0 +1,20 @@
+=== nlstools : Tools for nonlinear regression diagnostics ===
+
+
+
+Version 0.0-9
+=============
+
+NEW FEATURES
+
+- More graphical flexibilities
+
+BUG FIXES
+
+- Bootstrap confidence interval was not correctly specified
+
+Version 0.1-0
+=============
+
+- Initial release.
+

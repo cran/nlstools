@@ -19,7 +19,7 @@
 
 	tabboot <- sapply(l1[!sapply(l1, is.null)], function(z) z$coef)
 	rseboot <- sapply(l1[!sapply(l1, is.null)], function(z) z$rse)
-	recapboot <- t(apply(tabboot, 1, quantile, c(.5, .025, .75))); colnames(recapboot) <- c("Median","2.5%","97.5%")
+	recapboot <- t(apply(tabboot, 1, quantile, c(.5, .025, .975))); colnames(recapboot) <- c("Median","2.5%","97.5%")
 
 	serr <- sum(sapply(l1, is.null))
 	if(serr > 0) warning(paste("The fit did not converge", serr, "times during bootstrapping"))

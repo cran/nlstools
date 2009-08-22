@@ -1,3 +1,8 @@
+2009-08-22 17:39 baty
+	* version 0.0-9
+	* nlsBoot: the 95% CI was not supplied correctly (bug fixed, reported by Andrej-Nikolai Spiess)
+	* nlsContourRSS: new argument 'col.pal' which is used to define the palette of colors used in the background of the plot (suggestion by Dieter Menne).
+
 2009-02-19 15:53 baty
 	* version 0.0-8
 	* nlsResiduals.R: re-organization of the plots

@@ -40,6 +40,10 @@ nlsConfRegions (nls, length = 1000, exp = 1.5)
 	\item{ bounds }{ lower and upper bounds of the hypercube in which random values of parameters have been drawn }
 }
 
+\seealso{
+\code{ellipse.nls} in the \code{ellipse} library
+}
+
 \references{ 
 Beale EML (1960) Confidence regions in non-linear estimations. \emph{Journal of the Royal Statistical Society}, \bold{22B}, 41-88.\cr\cr
 Bates DM and Watts DG (1988) Nonlinear regression analysis and its applications. Wiley, Chichester, UK.

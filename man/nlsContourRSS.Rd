@@ -12,7 +12,7 @@ Provides residual sum of squares (RSS) contours
 
 \usage{
 nlsContourRSS (nls, lseq = 100, exp = 2)
-\method{plot}{nlsContourRSS} (x, nlev = 0, col = TRUE, ask = FALSE, \dots)
+\method{plot}{nlsContourRSS} (x, nlev = 0, col = TRUE, col.pal = terrain.colors(100), ask = FALSE, \dots)
 \method{print}{nlsContourRSS} (x, \dots)
 }
 
@@ -24,6 +24,7 @@ nlsContourRSS (nls, lseq = 100, exp = 2)
 	\item{exp}{ expansion factor of the parameter intervals defining the grids  }
 	\item{nlev}{ number of contour levels to add to the likelihood contour at level 95 percent }
 	\item{col}{ logical. Contours are plotted with colors if \code{TRUE} }
+	\item{col.pal}{ Palette of colors. Colors to be used as background (default is terrain.colors(100); unused if col is FALSE) }
 	\item{x}{ an object of class 'nlsContourRSS'  }
 	\item{ask}{ if TRUE, draw plot interactively (default is FALSE) }
 	\item{...}{ further arguments passed to or from other methods }
