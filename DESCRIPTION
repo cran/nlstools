@@ -1,6 +1,6 @@
 Package: nlstools
-Version: 0.0-9
-Date: Sun Aug 22 17:39:00 CET 2009
+Version: 0.0-10
+Date: Mon Feb 8 11:26:00 CET 2010
 Title: Tools for nonlinear regression diagnostics
 Author: Florent Baty <florent.baty@gmail.com> and Marie-Laure
         Delignette-Muller <ml.delignette@vet-lyon.fr>, with
@@ -10,6 +10,8 @@ Depends: stats
 Description: Several tools for assessing the quality of fit of a
         gaussian nonlinear model are provided.
 License: GPL (>= 2)
-Packaged: 2009-08-24 14:10:08 UTC; florent
 Repository: CRAN
-Date/Publication: 2009-08-28 20:18:43
+Repository/R-Forge/Project: nlstools
+Repository/R-Forge/Revision: 5
+Date/Publication: 2010-02-22 08:04:53
+Packaged: 2010-02-12 21:23:33 UTC; rforge

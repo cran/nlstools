@@ -1,5 +1,12 @@
 === nlstools : Tools for nonlinear regression diagnostics ===
 
+Version 0.0-10
+=============
+
+NEW FEATURES
+
+- New models for predictive microbiology : models for simultaneous growth of
+two competitive bacterial flora
 
 
 Version 0.0-9
@@ -17,4 +24,3 @@ Version 0.1-0
 =============
 
 - Initial release.
-
