@@ -50,8 +50,8 @@ Huet S, Bouvier A, Poursat M-A, Jolivet E (2003) Statistical tools for nonlinear
 }
 
 \author{ 
-Florent Baty \email{florent.baty@unibas.ch}\cr
-Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
+Florent Baty \email{florent.baty@gmail.com}\cr
+Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}
 }
 
 %\note{  }

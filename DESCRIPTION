@@ -1,9 +1,9 @@
 Package: nlstools
-Version: 0.0-10
-Date: Mon Feb 8 11:26:00 CET 2010
+Version: 0.0-11
+Date: Fri Apr 8 11:22:57 CEST 2011
 Title: Tools for nonlinear regression diagnostics
 Author: Florent Baty <florent.baty@gmail.com> and Marie-Laure
-        Delignette-Muller <ml.delignette@vet-lyon.fr>, with
+        Delignette-Muller <ml.delignette@vetagro-sup.fr>, with
         contributions from Sandrine Charles, Jean-Pierre Flandrois
 Maintainer: Florent Baty <florent.baty@gmail.com>
 Depends: stats
@@ -12,6 +12,6 @@ Description: Several tools for assessing the quality of fit of a
 License: GPL (>= 2)
 Repository: CRAN
 Repository/R-Forge/Project: nlstools
-Repository/R-Forge/Revision: 5
-Date/Publication: 2010-02-22 08:04:53
-Packaged: 2010-02-12 21:23:33 UTC; rforge
+Repository/R-Forge/Revision: 9
+Date/Publication: 2011-04-24 06:57:16
+Packaged: 2011-04-08 20:58:58 UTC; rforge

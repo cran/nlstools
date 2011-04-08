@@ -52,8 +52,8 @@ Zwietering MH, Jongenburger I, Rombouts FM, Van't Riet K (1990) Modeling of the 
 }
 
 \author{ 
-Florent Baty \email{florent.baty@unibas.ch}\cr
-Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
+Florent Baty \email{florent.baty@gmail.com}\cr
+Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}
 }
 
 %\note{  }

@@ -1,5 +1,13 @@
 === nlstools : Tools for nonlinear regression diagnostics ===
 
+Version 0.0-11
+=============
+
+NEW FEATURES
+
+- Update of the function 'plotfit': the default independent variable represented
+in the plot is the first independent variable
+
 Version 0.0-10
 =============
 
@@ -20,7 +28,7 @@ BUG FIXES
 
 - Bootstrap confidence interval was not correctly specified
 
-Version 0.1-0
+Version 0.0-1
 =============
 
 - Initial release.

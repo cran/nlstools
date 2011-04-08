@@ -56,8 +56,8 @@ Vimont A, Vernozy-Rozand C, Montet MP, Lazizzera C, Bavai C and Delignette-Mulle
 \emph{Applied and Environmental Microbiology} \bold{72}, 261-268.}
 
 \author{ 
-Florent Baty \email{florent.baty@unibas.ch}\cr
-Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}
+Florent Baty \email{florent.baty@gmail.com}\cr
+Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}
 }
 
 %\note{  }

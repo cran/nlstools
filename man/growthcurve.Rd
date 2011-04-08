@@ -24,7 +24,7 @@ data(growthcurve4)
 Data frames with 2 columns (t: time, LOG10N: decimal logarithm of bacterial density)
 }
 
-\source{ Data obtained by Florent Baty \email{florent.baty@unibas.ch} and Marie-Laure Delignette-Muller \email{ml.delignette@vet-lyon.fr}}
+\source{ Data obtained by Florent Baty \email{florent.baty@gmail.com} and Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}}
 
 %\references{  }
 

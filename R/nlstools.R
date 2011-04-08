@@ -38,9 +38,9 @@
 		lines(w0[[1]], predict(x,new=w0), col=col.fit, lty=lty, lwd=lwd)
 	}
 	else{
-		if(is.null(xlab)) xlab <- names(d)[variable]
+		if(is.null(xlab)) xlab <- varindep[variable]
 		if(is.null(ylab)) ylab <- vardep
-		plot(d[,vardep]~d[,variable], xlab=xlab, ylab=ylab, pch=pch.obs, col=col.obs, ...)
+		plot(d[,vardep] ~ d[,varindep[variable]], xlab=xlab, ylab=ylab, pch=pch.obs, col=col.obs, ...)
 		points(d[,variable], predict(x), pch=pch.fit, col=col.fit)
 	}
 }
