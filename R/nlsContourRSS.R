@@ -60,7 +60,7 @@
 }
 
 
-"plot.nlsContourRSS"<-function(x, nlev=0, col=TRUE, col.pal=terrain.colors(100), ask=FALSE, ...){
+"plot.nlsContourRSS"<-function(x, nlev=0, col=TRUE, col.pal=terrain.colors(100), ask=FALSE, useRaster=TRUE, ...){
 	if (!inherits(x, "nlsContourRSS"))
 		stop("Use only with 'nlsContourRSS' objects")
 
@@ -80,7 +80,7 @@
 		for(j in (i+1):np){
 			count <- count + 1
 			if(col){
-				image(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], xlab=paranames[i], ylab=paranames[j], col=col.pal)
+				image(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], xlab=paranames[i], ylab=paranames[j], col=col.pal, useRaster=useRaster)
 				if(nlev>0) contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", nlevels=nlev, add=TRUE)
 				contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red", add=TRUE)
 			}

@@ -1,8 +1,12 @@
-2011-04-08 11:24 baty
+2012-04-20 16:49 baty
+	* version 0.0-12
+	* plotfit function was modified in order to avoid that different independent variables are used in the plot and points statement (thanks to the help of Wolfgang Kraus)
+	* plot.nlsContourRSS was updated with an extra argument useRaster (= TRUE by default) so that a bitmap raster is used in the image displaying the contours
+	
+2011-02-11 08:47 baty
     * version 0.0-11
     * update contact information
     * plotfit: the first independent variable is selected by default for the representation (x-axis)
-    * vignette: remove non-ASCII characters
 
 2010-01-08 11:22 Delignette-Muller
     * version 0.0-10

@@ -27,6 +27,7 @@
 	d <- eval(x$call$data, sys.frame(0))
 	vardep <- all.vars(formula(x)[[2]])
 	varindep <- intersect(all.vars(formula(x)[[3]]), colnames(d))
+	variable1 <- which(varindep == colnames(d)[variable])
 	if (smooth & length(varindep)!=1) 
         	stop("smooth option is only possible when the number of independent variables equals 1")
 	if(smooth | smooth=="T"){
@@ -38,10 +39,10 @@
 		lines(w0[[1]], predict(x,new=w0), col=col.fit, lty=lty, lwd=lwd)
 	}
 	else{
-		if(is.null(xlab)) xlab <- varindep[variable]
+		if(is.null(xlab)) xlab <- varindep[variable1]
 		if(is.null(ylab)) ylab <- vardep
-		plot(d[,vardep] ~ d[,varindep[variable]], xlab=xlab, ylab=ylab, pch=pch.obs, col=col.obs, ...)
-		points(d[,variable], predict(x), pch=pch.fit, col=col.fit)
+		plot(d[,vardep] ~ d[,varindep[variable1]], xlab=xlab, ylab=ylab, pch=pch.obs, col=col.obs, ...)
+		points(d[,varindep[variable1]], predict(x), pch=pch.fit, col=col.fit)
 	}
 }
 

@@ -2,7 +2,7 @@
 % \VignetteDepends{nlstools, stats}
 
 \documentclass[a4paper]{article}
-\usepackage[a4paper,textwidth=18cm,textheight=27cm]{geometry}
+%\usepackage[a4paper,textwidth=18cm,textheight=27cm]{geometry}
 
 \title{Use of the package \texttt{nlstools} to help the fit and assess the quality of fit of a gaussian nonlinear model}
 \author{Marie Laure Delignette-Muller and Florent Baty}
@@ -15,7 +15,7 @@
     
  \[  
     y = f(\theta,x)+ \varepsilon, \hspace{0.5cm} \varepsilon \sim \mathcal{N}(0,\sigma)
- \] 
+ \]     
 
     The aim of this document is to provide examples showing how to use these tools that help to fit a model to data using the fonction \texttt{nls}, to check the validity of the assumptions of the model, to assess its quality of fit, to evaluate the precision of parameters estimates by use of confidence intervals or regions, ... For details, see the documentation of each function, using the R help command (e.g. \texttt{?nlsResiduals}). Do not forget to load the library using the function \texttt{library} before testing the following examples.
 
@@ -219,17 +219,17 @@ plot(boomaf, type="pairs")
 \begin{thebibliography}{1}
 
 \bibitem{Bates}
-Bates, D.M. and Watts, D.G. (1988) Nonlinear regression analysis and its applications. Wiley, Chichester, UK.\\
+Bates~D.M. and Watts~D.G. (1988) Nonlinear regression analysis and its applications. Wiley, Chichester, UK.\\
 
 \bibitem{Beale}
-Beale, E.M.L. (1960) Confidence regions in non-linear estimations. 
+Beale~E.M.L. (1960) Confidence regions in non-linear estimations. 
 \emph{Journal of the Royal Statistical Society}, 22B, 41-88.\\
 
 \bibitem{Seber}
-Seber, G.A.F., Wild, C.J. (1989) Nonlinear regression. Wiley, New York.\\
+Seber~G.A.F., Wild~C.J. (1989) Nonlinear regression. Wiley, New York.\\
 
 \bibitem{Huet}
-Huet, S., Bouvier, A., Poursat, M.A., Jolivet, E. (2003) Statistical tools for nonlinear 
+Huet~S., Bouvier~A., Poursat~M.A., Jolivet~E. (2003) Statistical tools for nonlinear 
 regression: a practical guide with S-PLUS and R examples. Springer, Berlin, Heidelberg, New York.\\
 
 \end{thebibliography}
