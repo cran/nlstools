@@ -1,8 +1,7 @@
-530fb157e674eb19d334ddb8e572bcdf *ChangeLog
-6e8bceac9fae8202262bf725db2ce5c3 *DESCRIPTION
+964aac6e50e6532e6c41c9ea6eff3915 *ChangeLog
+88b709c337dbc5a80542adb4a021be11 *DESCRIPTION
 dc1f1a9a1e3c26b81fd36af9936c278b *LICENCE
 eb80d4f36595e8c461d8f8685c030140 *NAMESPACE
-849b91770b9debb0815530a4708c2a33 *R/First.lib.R
 04923d56d4e660b73af45ed772b01a58 *R/competitionmodels.R
 d403cb1ec6e57d574124299d4126b6a8 *R/growthmodels.R
 28b45fa4276ebaf9c148d5510753dee6 *R/michaelismodels.R
@@ -26,10 +25,10 @@ e786fbdea41cb5ac90c35debdbeb3dc4 *data/growthcurve3.rda
 563855379390a1639895a2fea9aa88f2 *data/survivalcurve3.rda
 8518867e2c5f4ac0f0470a3a97427181 *data/vmkm.rda
 34c9f008b78aaaeaf53c6187bbc951b6 *data/vmkmki.rda
-3e318acc2bac5142440eb7e51b67f3fa *inst/CITATION
-5c032b9150824f91bb1650b3d7de3708 *inst/NEWS
+9db2d7f0957ed2c7ab8f982b546981cd *inst/CITATION
+d261b8cd23886f3fe4e2d1dbd4acf5de *inst/NEWS
 bde34a4f7fdf0211aa9ecd830bd6da00 *inst/doc/nlstools_vignette.Rnw
-97a09dd0fc2c1d890cb024be8adcd2ba *inst/doc/nlstools_vignette.pdf
+1fb0f20a42de73a462da1fe72b395e60 *inst/doc/nlstools_vignette.pdf
 d32239bcb673463ab874e80d47fae504 *inst/gpl-3.0.txt
 11b3db997b37489eb40a3ca068ede138 *man/competitioncurve.Rd
 37c1d6124eafbdc6690a2a71a4224692 *man/competitionmodels.Rd

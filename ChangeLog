@@ -1,3 +1,7 @@
+2012-11-30 11:23 baty
+	* version 0.0-13
+	* fix .First.lib call issue by removing unnecessary First.lib.R
+
 2012-04-20 16:49 baty
 	* version 0.0-12
 	* plotfit function was modified in order to avoid that different independent variables are used in the plot and points statement (thanks to the help of Wolfgang Kraus)

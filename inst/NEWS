@@ -1,5 +1,25 @@
 === nlstools : Tools for nonlinear regression diagnostics ===
 
+Version 0.0-13
+=============
+
+BUG FIXES
+
+- Fixed .First.lib issue by removing unnecessary First.lib.R
+
+
+Version 0.0-12
+=============
+
+NEW FEATURES
+
+- plot.nlsContourRSS was updated with an extra argument useRaster (= TRUE by default) so that a bitmap raster is used in the image displaying the contours
+
+BUG FIXES
+
+- plotfit function was modified in order to avoid that different independent variables are used in the plot and points statement (thanks to the help of Wolfgang Kraus)
+
+
 Version 0.0-11
 =============
 
