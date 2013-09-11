@@ -1,6 +1,5 @@
-964aac6e50e6532e6c41c9ea6eff3915 *ChangeLog
-c61779d7c60af80c1ceccd36a8f3e883 *DESCRIPTION
-dc1f1a9a1e3c26b81fd36af9936c278b *LICENCE
+244b509d9fe048a7c3ab17381c5ca84e *ChangeLog
+7fdac460c6d8378fbc6786912186afdb *DESCRIPTION
 0ad433dc68b73ae340b6a7a1e60e1081 *NAMESPACE
 04923d56d4e660b73af45ed772b01a58 *R/competitionmodels.R
 d403cb1ec6e57d574124299d4126b6a8 *R/growthmodels.R
@@ -13,6 +12,8 @@ cf5f88618932635fda94c1125be2b486 *R/nlsResiduals.R
 c4753d08d118df772077701ec654f9b9 *R/nlstools.R
 beac85b9885f4318a4d74d96ed7765b7 *R/secondary.R
 12c28792b324635216ec1cef51872595 *R/survivalmodels.R
+75ebfa412f7b19e2036822b114e44bc0 *build/vignette.rds
+c6932bc395962db04a5b5c5d21c904f6 *data/O2K.rda
 4aad4ee128f0b47c10504b0be74b861f *data/competition1.rda
 cf29c5e315cda6ce5f99cb16341e5503 *data/competition2.rda
 9ff5a29606aebd94fd0ed8eddc026558 *data/growthcurve1.rda
@@ -25,11 +26,13 @@ dd9d8a21342ea77203e394200ce7b45e *data/survivalcurve2.rda
 48db30e432e431270263a2d8126b216a *data/survivalcurve3.rda
 1121faf3988c3ce87c147ae60dde4023 *data/vmkm.rda
 0ddbc672e9ac73b95035eddb14d9cfbe *data/vmkmki.rda
-9db2d7f0957ed2c7ab8f982b546981cd *inst/CITATION
-dad6037b2a4757b034be5820e6c19d63 *inst/NEWS
+5fbdcf9a2a93eda671812f9cf85d2d39 *inst/CITATION
+75960de2791c491ce500cf6bde9a498f *inst/NEWS
+c87a2290e66a3c2f4512bb47ea3a16c0 *inst/doc/nlstools_vignette.R
 bde34a4f7fdf0211aa9ecd830bd6da00 *inst/doc/nlstools_vignette.Rnw
-7b1e55ebc6171ffbb571169a36041af3 *inst/doc/nlstools_vignette.pdf
+b72a0a681ec4031092c8797db99011aa *inst/doc/nlstools_vignette.pdf
 d32239bcb673463ab874e80d47fae504 *inst/gpl-3.0.txt
+adb334b250a2a55dd661f53039310f58 *man/O2K.Rd
 11b3db997b37489eb40a3ca068ede138 *man/competitioncurve.Rd
 37c1d6124eafbdc6690a2a71a4224692 *man/competitionmodels.Rd
 04bf86abbf8cef24d555e1078dbf719d *man/growthcurve.Rd
@@ -38,10 +41,10 @@ f644b73ca1392ad2457576993925cdb2 *man/michaelisdata.Rd
 a9b67fef937d4ed4f670131cbac5de5b *man/michaelismodels.Rd
 4f88fd5bb806735961044dafdae2bd26 *man/nlsBoot.Rd
 6a3af711249fbfdefc91d8bd99131167 *man/nlsConfRegions.Rd
-cc4ad3fdddbf6dc49b0a522193ef588b *man/nlsContourRSS.Rd
+bb78d20cb9b9c8a425f231659a544293 *man/nlsContourRSS.Rd
 9aecfda88a1bbdde5465d96af5944d4d *man/nlsJack.Rd
 3bd4893f0df774ca510c6c7c96ce4d2e *man/nlsResiduals.Rd
-1baeca3a292adfca4e812cff63316c57 *man/nlstools.Rd
+a1b17bdcaa5379b9c3296ba470631375 *man/nlstools.Rd
 d8ed29a037ab96e9e3f7624c624096b7 *man/ross.Rd
 4a44681b6427c57ba9f7c58c568dcc7e *man/secondary.Rd
 d835b7e8bf6a74842594f0808e5b3678 *man/survivalcurve.Rd

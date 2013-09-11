@@ -1,3 +1,10 @@
+2013-09-30 17:07 baty
+	* version 0.0-15
+	* O2K.rda: new dataset about oxygen kinetics in 6-minute walk test
+	
+2012-12-10 14:57 baty
+	* version 0.0-14
+	
 2012-11-30 11:23 baty
 	* version 0.0-13
 	* fix .First.lib call issue by removing unnecessary First.lib.R

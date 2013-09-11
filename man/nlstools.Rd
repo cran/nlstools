@@ -12,7 +12,8 @@ Tools to help the fit of nonlinear models with nls
 
 \usage{
 preview (formula, data, start, variable = 1)
-plotfit (x, smooth=FALSE, variable=1, xlab=NULL, ylab=NULL, pch.obs=1, pch.fit="+", lty=1, lwd=1, col.obs="black", col.fit="red", ...)
+plotfit (x, smooth=FALSE, variable=1, xlab=NULL, ylab=NULL, pch.obs=1, 
+         pch.fit="+", lty=1, lwd=1, col.obs="black", col.fit="red", ...)
 overview (x)
 }
 %- maybe also 'usage' for other objects documented here.

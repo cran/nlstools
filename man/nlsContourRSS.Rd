@@ -12,7 +12,8 @@ Provides residual sum of squares (RSS) contours
 
 \usage{
 nlsContourRSS (nls, lseq = 100, exp = 2)
-\method{plot}{nlsContourRSS} (x, nlev = 0, col = TRUE, col.pal = terrain.colors(100), ask = FALSE, useRaster = TRUE, \dots)
+\method{plot}{nlsContourRSS} (x, nlev = 0, col = TRUE, col.pal = terrain.colors(100), 
+                              ask = FALSE, useRaster = TRUE, \dots)
 \method{print}{nlsContourRSS} (x, \dots)
 }
 

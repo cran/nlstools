@@ -4,11 +4,11 @@ citHeader("To cite nlstools in publications use:")
 citEntry(entry="Manual",
          title = "nlstools: tools for nonlinear regression diagnostics",
          author = "Florent Baty and Marie-Laure Delignette-Muller",
-     year = 2012,
-         note = "R package version 0.0-13",
+     year = 2013,
+         note = "R package version 0.0-15",
 
          textVersion =
      paste( "F. Baty and M. L. Delignette-Muller",
-        "(2012),",
+        "(2013),",
             "nlstools: tools for nonlinear regression diagnostics.")
 )
