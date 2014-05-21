@@ -3,9 +3,7 @@ import(stats)
 
 ### Exports
 # functions
-export(preview)
-export(overview)
-export(plotfit)
+export(preview, overview, plotfit)
 
 export(nlsBoot)
 S3method(summary, nlsBoot)
@@ -30,40 +28,64 @@ S3method(plot, nlsResiduals)
 S3method(print, nlsResiduals)
 export(test.nlsResiduals)
 
-# Models
-# growth models
-export(baranyi)
-export(baranyi_without_lag)
-export(baranyi_without_Nmax)
-export(buchanan)
-export(buchanan_without_Nmax)
-export(buchanan_without_lag)
-export(gompertzm)
-
-# competition models
-export(jameson_buchanan)
-export(jameson_baranyi)
-export(jameson_without_lag)
-
 # Michaelis models
-export(michaelis)
-export(compet_mich)
-export(non_compet_mich)
+export(michaelis, compet_mich, non_compet_mich)
 
-# secondary models
-export(cpm_T)
-export(cpm_pH_4p)
-export(cpm_pH_3p)
-export(cpm_aw_3p)
-export(cpm_aw_2p)
-export(cpm_T_pH_aw)
+# Defunct functions
+#export(geeraerd, geeraerd_without_Nres, geeraerd_without_Sl, mafart, albert, trilinear, bilinear_without_Nres, bilinear_without_Sl, baranyi, baranyi_without_Nmax, baranyi_without_lag, buchanan, buchanan_without_Nmax, buchanan_without_lag, gompertzm, jameson_buchanan, jameson_baranyi, jameson_without_lag, cpm_T, cpm_pH_4p, cpm_pH_3p, cpm_aw_3p, cpm_aw_2p, cpm_T_pH_aw)
+#export(competition1, competition2, growthcurve1, growthcurve2, growthcurve3, growthcurve4, ross, survivalcurve1, survivalcurve2, survivalcurve3)
 
-# survivak models
-export(albert)
-export(geeraerd)
-export(geeraerd_without_Nres)
-export(geeraerd_without_Sl)
-export(mafart)
-export(trilinear)
-export(bilinear_without_Nres)
-export(bilinear_without_Sl)
+
+#####################################
+##            Not Exported         ##
+#####################################
+
+## ******* defunct *******
+## "albert"
+## "baranyi"
+## "baranyi_without_lag"
+## "baranyi_without_Nmax"
+## "bilinear_without_Nres"
+## "bilinear_without_SI"
+## "buchanan"
+## "buchanan_without_lag"
+## "buchanan_without_Nmax"
+## "competition1"
+## "competition2"
+## "competitioncurve"
+## "competitionmodels"
+## "compet_mich"
+## "cpm_aw_2p"
+## "cpm_aw_3p"
+## "cpm_pH_3p"
+## "cpm_pH_4p"
+## "cpm_T"
+## "cpm_T_pH_aw"
+## "geeraerd"
+## "geeraerd_without_Nres"
+## "geeraerd_without_SI"
+## "gompertzm"
+## "growthcurve1"
+## "growthcurve2"
+## "growthcurve3"
+## "growthcurve4"
+## "growthmodels"
+## "jameson_baranyi"
+## "jameson_buchanan"
+## "jameson_without_lag"
+## "mafart"
+## "michaelis"
+## "michaelismodels"
+## "non_compet_mich"
+## "ross"
+## "secondary"
+## "survivalcurve1"
+## "survivalcurve2"
+## "survivalcurve3"
+## "survivalmodels"
+## "trilinear"
+## "vmkm"
+## "vmkmki"
+
+
+

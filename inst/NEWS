@@ -1,4 +1,16 @@
-=== nlstools : Tools for nonlinear regression diagnostics ===
+=== nlstools: Tools for nonlinear regression diagnostics ===
+
+Version 1.0-0
+=============
+
+NEW FEATURES
+
+- Most nonlinear model formulas and data sets related to predictive microbiology (as well as the associated vignette) have been moved to the separate package 'nlsMicrobio'
+- The output of the function nlsJack() include the jackknife bias
+- The confidence intervals provided by the function overview were renamed "t-based confidence intervals" 
+- The function nlsBoot() generate a Bootstrap statistics including an estimate (mean of bootstrapped parameters) and a standard error (sd of the bootstrapped parameters)
+- The vignette was temporarily removed
+- The plotting function associated with the function nlsContourRSS() depicts the section of the Beale's 95% confidence region using a thicker red dotted line
 
 Version 0.0-15
 =============

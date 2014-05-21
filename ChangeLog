@@ -1,3 +1,7 @@
+2014-05-12 16:15 baty
+  * version 1.0-0
+	* Most formulas and data sets related to predictive microbiology (as well as the associated vignette) have been moved to the separate package 'nlsMicrobio'
+
 2013-09-30 17:07 baty
 	* version 0.0-15
 	* O2K.rda: new dataset about oxygen kinetics in 6-minute walk test

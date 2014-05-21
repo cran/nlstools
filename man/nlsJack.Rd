@@ -25,11 +25,11 @@ nlsJack (nls)
 
 \value{ 
 	\code{nlsJack} returns a list with 7 objects:
-	\item{ estijack }{ a vector with jackknife estimates }
-	\item{ coefjack }{ a dataframe with the parameter estimates for each jackknife sample }
-	\item{ reldif }{ a dataframe with the absolute relative difference (in percent of the estimate) of the estimates with and without each observation }
-	\item{ dfb }{ a dataframe with dfbetas for each parameter and each observation }
-	\item{ jackCI }{ a dataframe with jackknife confidence intervals }
+	\item{ estijack }{ a data frame with jackknife estimates and bias }
+	\item{ coefjack }{ a data frame with the parameter estimates for each jackknife sample }
+	\item{ reldif }{ a data frame with the absolute relative difference (in percent of the estimate) of the estimates with and without each observation }
+	\item{ dfb }{ a data frame with dfbetas for each parameter and each observation }
+	\item{ jackCI }{ a data frame with jackknife confidence intervals }
 	\item{ rse }{ a vector with residual standard error for each jackknife sample }
 	\item{ rss }{ residual a vector with residual sum of squares for each jackknife sample }
 }
@@ -50,12 +50,14 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}
 %\note{  }
 
 \examples{
-data(growthcurve4)
-nls1 <- nls(gompertzm, growthcurve4,
-	list(lag = 10, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
-lj <- nlsJack(nls1)
-plot(lj)
-summary(lj)
+formulaExp <- as.formula(VO2 ~ (t <= 5.883) * VO2rest + (t > 5.883) * 
+                        (VO2rest + (VO2peak - VO2rest) * 
+                        (1 - exp(-(t - 5.883) / mu))))
+O2K.nls1 <- nls(formulaExp, start = list(VO2rest = 400, VO2peak = 1600, mu = 1), 
+               data = O2K)
+O2K.jack1 <- nlsJack(O2K.nls1)
+plot(O2K.jack1)
+summary(O2K.jack1)
 }
 
 \keyword{ nonlinear }% at least one, from doc/KEYWORDS

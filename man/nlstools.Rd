@@ -12,8 +12,9 @@ Tools to help the fit of nonlinear models with nls
 
 \usage{
 preview (formula, data, start, variable = 1)
-plotfit (x, smooth=FALSE, variable=1, xlab=NULL, ylab=NULL, pch.obs=1, 
-         pch.fit="+", lty=1, lwd=1, col.obs="black", col.fit="red", ...)
+plotfit (x, smooth = FALSE, variable = 1, xlab = NULL, ylab = NULL, 
+         pch.obs = 1, pch.fit = "+", lty = 1, lwd = 1, col.obs = "black", 
+         col.fit = "red", ...)
 overview (x)
 }
 %- maybe also 'usage' for other objects documented here.
@@ -21,7 +22,7 @@ overview (x)
 	\item{formula}{ formula of a non-linear model }
 	\item{data}{ a data frame with header matching the variables given in the formula }
 	\item{start}{ a list of parameter starting values which names match the parameters given in the formula }
-	\item{variable}{ index of the variable to be plotted against the predicted values; default is the first independent variable as it appear in the orginal dataset }
+	\item{variable}{ index of the variable to be plotted against the predicted values; default is the first independent variable as it appears in the orginal dataset }
 	\item{x}{ an object of class 'nls' }
 	\item{smooth}{ a logical value, default is FALSE. If smooth is TRUE, a plot of observed values is plotted as a function of 1000 values continuously taken in the range interval [min(variable),max(variable)]. This option can only be used if the number of controlled variables is 1. } 
 	\item{xlab}{ X-label }
@@ -56,13 +57,14 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}
 %\note{  }
 
 \examples{
-data(growthcurve4)
-preview(gompertzm, growthcurve4, 
-	list(lag = 50, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 8.8))
-nls1 <- nls(gompertzm, growthcurve4,
-	list(lag = 10, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
-overview(nls1)
-plotfit(nls1, smooth = TRUE)
+formulaExp <- as.formula(VO2 ~ (t <= 5.883) * VO2rest + (t > 5.883) * 
+                        (VO2rest + (VO2peak - VO2rest) * 
+                        (1 - exp(-(t - 5.883) / mu))))
+preview(formulaExp, O2K, list(VO2rest = 400, VO2peak = 1600, mu = 1))
+O2K.nls1 <- nls(formulaExp, start = list(VO2rest = 400, VO2peak = 1600, 
+                mu = 1), data = O2K)
+overview(O2K.nls1)
+plotfit(O2K.nls1, smooth = TRUE)
 }
 
 \keyword{ nonlinear }% at least one, from doc/KEYWORDS

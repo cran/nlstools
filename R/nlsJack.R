@@ -19,11 +19,11 @@
 	dfb <- t(sapply(l1, function(z) z$dfb))
 	reldif	<- apply(tabjack, 1, function(x) 100*abs(x-coef(nls))/coef(nls))
 	pseudo <- t(apply((nl-1) * tabjack, 1, function(z) nl * coef(nls) - z))
-	estijack <- colSums(pseudo) / nl
-	sum1 <- crossprod(t(t(pseudo) - estijack))
+	estijack <- cbind.data.frame(Estimates=colSums(pseudo) / nl, Bias=coef(nls) - colSums(pseudo) / nl)
+	sum1 <- crossprod(t(t(pseudo) - estijack$Estimates))
 	varjack <- (1 / (nl * (nl - 1))) * sum1
 	student95 <- qt(0.975, df = nl - np)
-	ICjack <- cbind.data.frame(Esti = estijack, Low = estijack - student95 * sqrt(diag(varjack)), Up = estijack + student95 * sqrt(diag(varjack)))
+	ICjack <- cbind.data.frame(Esti = estijack$Estimates, Low = estijack$Estimates - student95 * sqrt(diag(varjack)), Up = estijack$Estimates + student95 * sqrt(diag(varjack)))
 
 	listjack	<-list(estijack=estijack, coefjack=tabjack, reldif=reldif, rse=rsejack, rss=rssjack ,dfb=dfb, jackCI=ICjack)
 	class(listjack) <- "nlsJack"
@@ -51,7 +51,7 @@
 	cat("Jackknife resampling\n")
 	cat("\n")
 	sumry <- array("", c(3, 4), list(1:3, c("vector", "length", "mode", "content")))
-	sumry[1, ] <- c("$estijack", length(x$estijack), mode(x$estijack), "jackknife estimates")
+	sumry[1, ] <- c("$estijack", length(x$estijack), mode(x$estijack), "jackknife estimates and bias")
 	sumry[2, ] <- c("$rse", length(x$rse), mode(x$rse), "residual errors")
 	sumry[3, ] <- c("$rss", length(x$rss), mode(x$rss), "residual sum of squares")
 	class(sumry) <- "table"
@@ -71,7 +71,7 @@
 	if (!inherits(object, "nlsJack"))
 		stop("Use only with 'nlsJack' objects")
 	cat("\n------\n")
-	cat("Jackknife estimates\n")
+	cat("Jackknife statistics\n")
 	print(object$estijack)
 	cat("\n------\n")
 	cat("Jackknife confidence intervals\n")
@@ -80,6 +80,6 @@
 	cat("Influential values\n")
 	inf1 <- which(object$dfb>(2/sqrt(nrow(object$dfb))), arr.ind=TRUE)
 	for(i in 1:nrow(inf1))
-		cat("* Observation", inf1[i,1], "is influential on", names(object$estijack)[inf1[i,2]], "\n")
+		cat("* Observation", inf1[i,1], "is influential on", rownames(object$estijack)[inf1[i,2]], "\n")
 	cat("\n")
 }

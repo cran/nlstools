@@ -56,11 +56,13 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}
 %\note{  }
 
 \examples{
-data(growthcurve4)
-nls1 <- nls(gompertzm, growthcurve4,
-	list(lag = 10, mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
-crss <- nlsContourRSS(nls1)
-plot(crss)
+formulaExp <- as.formula(VO2 ~ (t <= 5.883) * VO2rest + (t > 5.883) * 
+                        (VO2rest + (VO2peak - VO2rest) * 
+                        (1 - exp(-(t - 5.883) / mu))))
+O2K.nls1 <- nls(formulaExp, start = list(VO2rest = 400, VO2peak = 1600, 
+                mu = 1), data = O2K)
+O2K.cont1 <- nlsContourRSS(O2K.nls1)
+plot(O2K.cont1)
 }
 
 \keyword{ nonlinear }% at least one, from doc/KEYWORDS

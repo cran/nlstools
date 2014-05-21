@@ -82,14 +82,14 @@
 			if(col){
 				image(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], xlab=paranames[i], ylab=paranames[j], col=col.pal, useRaster=useRaster)
 				if(nlev>0) contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", nlevels=nlev, add=TRUE)
-				contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red", add=TRUE)
+				contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red", lwd=2, add=TRUE)
 			}
 			else{
 				if(nlev>0){
 					contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", nlevels=nlev, xlab=paranames[i], ylab=paranames[j])
-					contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red", add=TRUE)
+					contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red", lwd=2, add=TRUE)
 				}
-				else contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red")
+				else contour(x$seqPara[,i], x$seqPara[,j], x$lrss[[count]], labels="", levels=x$lrss95, lty=3, col="red", lwd=2)
 			}
 		}
 	par(def.par)	

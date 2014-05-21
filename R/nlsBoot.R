@@ -19,12 +19,13 @@
 
 	tabboot <- sapply(l1[!sapply(l1, is.null)], function(z) z$coef)
 	rseboot <- sapply(l1[!sapply(l1, is.null)], function(z) z$rse)
-	recapboot <- t(apply(tabboot, 1, quantile, c(.5, .025, .975))); colnames(recapboot) <- c("Median","2.5%","97.5%")
-
+	recapboot <- t(apply(tabboot, 1, quantile, c(.5, .025, .975))); colnames(recapboot) <- c("Median", "2.5%", "97.5%")
+	estiboot <- t(apply(tabboot, 1, function(z) c(mean(z), sd(z)))); colnames(estiboot) <- c("Estimate", "Std. error")
+	
 	serr <- sum(sapply(l1, is.null))
 	if(serr > 0) warning(paste("The fit did not converge", serr, "times during bootstrapping"))
 	
-	listboot <- list(coefboot=t(tabboot), rse=rseboot, bootCI=recapboot)
+	listboot <- list(coefboot = t(tabboot), rse = rseboot, bootCI = recapboot, estiboot = estiboot)
 	class(listboot) <- "nlsBoot"
 	return(listboot)
 	
@@ -70,9 +71,10 @@
 	class(sumry) <- "table"
 	print(sumry)
 	cat("\n")
-	sumry <- array("", c(2, 4), list(1:2, c("data.frame", "nrow", "ncol", "content")))
+	sumry <- array("", c(3, 4), list(1:3, c("data.frame", "nrow", "ncol", "content")))
 	sumry[1, ] <- c("$coefboot", nrow(x$coefboot), ncol(x$coefboot), "Bootstrap parameter estimates")
-	sumry[2, ] <- c("$bootCI", nrow(x$bootCI), ncol(x$bootCI), "Bootstrap medians and 95% CI")
+	sumry[2, ] <- c("$estiboot", nrow(x$estiboot), ncol(x$estiboot), "Bootstrap estimates and std. error")
+	sumry[3, ] <- c("$bootCI", nrow(x$bootCI), ncol(x$bootCI), "Bootstrap medians and 95% CI")
 	class(sumry) <- "table"
 	print(sumry)
 	cat("\n")
@@ -82,11 +84,11 @@
 	if (!inherits(object, "nlsBoot"))
 		stop("Use only with 'nlsBoot' objects")
 	cat("\n------\n")
-	cat("Bootstrap estimates\n")
-	print(object$bootCI[,1])
+	cat("Bootstrap statistics\n")
+	print(object$estiboot)
 	cat("\n------\n")
-	cat("Bootstrap confidence intervals\n")
-	print(object$bootCI[,2:3])
+	cat("Median of bootstrap estimates and percentile confidence intervals\n")
+	print(object$bootCI)
 	cat("\n")
 }
 

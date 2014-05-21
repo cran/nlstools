@@ -61,7 +61,7 @@
 	binf <- esti - t95 * ster
 	bsup <- esti + t95 * ster
 	cat("------\n")
-	cat("Asymptotic confidence interval:\n")
+	cat("t-based confidence interval:\n")
 	print(cbind.data.frame("2.5%" = binf, "97.5%" = bsup))
 	cat("\n")
 	cat("------\n")

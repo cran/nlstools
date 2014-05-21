@@ -68,18 +68,20 @@ Marie-Laure Delignette-Muller \email{ml.delignette@vetagro-sup.fr}
 
 \examples{
 # Plots of residuals
-data(growthcurve4)
-nls1 <- nls(gompertzm, growthcurve4,
-	list(lag = 10,mumax = 0.1, LOG10N0 = 6, LOG10Nmax = 9))
-nr <- nlsResiduals(nls1)
-plot(nr, which = 0)
+formulaExp <- as.formula(VO2 ~ (t <= 5.883) * VO2rest + (t > 5.883) * 
+                        (VO2rest + (VO2peak - VO2rest) * 
+                        (1 - exp(-(t - 5.883) / mu))))
+O2K.nls1 <- nls(formulaExp, start = list(VO2rest = 400, VO2peak = 1600, mu = 1), 
+               data = O2K)
+O2K.res1 <- nlsResiduals(O2K.nls1)
+plot(O2K.res1, which = 0)
 
 # Histogram and qq-plot
-plot(nr, which=5)
-plot(nr, which=6)
+plot(O2K.res1, which = 5)
+plot(O2K.res1, which = 6)
 	
 # Tests
-test.nlsResiduals(nr)
+test.nlsResiduals(O2K.res1)
 }
 
 \keyword{ nonlinear }% at least one, from doc/KEYWORDS
