@@ -1,4 +1,12 @@
-=== nlstools: Tools for nonlinear regression diagnostics ===
+=== nlstools: Tools for Nonlinear Regression Analysis ===
+
+Version 1.0-1
+=============
+
+NEW FEATURES
+
+- The function 'confint2' originated from the deprecated package 'nlrwr' was added
+- The new data set 'L.minor' originated from the deprecated package 'nlrwr' was added
 
 Version 1.0-0
 =============

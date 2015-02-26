@@ -35,6 +35,10 @@ export(michaelis, compet_mich, non_compet_mich)
 #export(geeraerd, geeraerd_without_Nres, geeraerd_without_Sl, mafart, albert, trilinear, bilinear_without_Nres, bilinear_without_Sl, baranyi, baranyi_without_Nmax, baranyi_without_lag, buchanan, buchanan_without_Nmax, buchanan_without_lag, gompertzm, jameson_buchanan, jameson_baranyi, jameson_without_lag, cpm_T, cpm_pH_4p, cpm_pH_3p, cpm_aw_3p, cpm_aw_2p, cpm_T_pH_aw)
 #export(competition1, competition2, growthcurve1, growthcurve2, growthcurve3, growthcurve4, ross, survivalcurve1, survivalcurve2, survivalcurve3)
 
+export(confint2)
+
+#export(confint2)
+#export(nls)
 
 #####################################
 ##            Not Exported         ##

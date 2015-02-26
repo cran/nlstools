@@ -4,13 +4,13 @@ citHeader("To cite nlstools in publications use:")
 citEntry(entry="Article",
   title = "A Toolbox for Nonlinear Regression in R: The Package nlstools",
   author = personList(as.person("F. Baty"),as.person("C. Ritz"), as.person("S. Charles"), as.person("M. Brutsche"), as.person("J.P. Flandrois"), as.person("M.L. Delignette-Muller")),
-	journal = "under revision at Journal of Statistical Software",
-  year = "2014",
+	journal = "accepted for publication at the Journal of Statistical Software",
+  year = "2015",
 	         
         textVersion = 
         paste("Baty, F. and Ritz, C. and Charles, S. and Brutsche, M. and Flandrois, J.P. and Delignette-Muller, M.L.",
-	       " (2014). ", 
+	       " (2015). ", 
                "A Toolbox for Nonlinear Regression in R: The Package nlstools. ",
-               "under revision at Journal of Statistical Software. ",
+               "accepted for publication at the Journal of Statistical Software. ",
                sep="")
          )

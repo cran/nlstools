@@ -1,5 +1,10 @@
+2015-02-26 09:50 baty
+	* version 1.0-1
+	* The new function 'confint2' (originally implemented in the deprecated package 'nlrwr') was added to the 'nlstools'
+	* The new dataset 'L.minor' (originated from the deprecated package 'nlwrw') was added to 'nlstools'
+
 2014-05-12 16:15 baty
-  * version 1.0-0
+  	* version 1.0-0
 	* Most formulas and data sets related to predictive microbiology (as well as the associated vignette) have been moved to the separate package 'nlsMicrobio'
 
 2013-09-30 17:07 baty
