@@ -47,7 +47,8 @@ overview (x)
 }
 
 \references{ 
-Bates DM and Watts DG (1988) Nonlinear regression analysis and its applications. Wiley, Chichester, UK.\cr
+Baty F, Ritz C, Charles S, Brutsche M, Flandrois J-P, Delignette-Muller M-L (2015). A Toolbox for Nonlinear Regression in R: The Package nlstools. \emph{Journal of Statistical Software}, \bold{66}(5), 1-21.\cr\cr
+Bates DM and Watts DG (1988) Nonlinear regression analysis and its applications. Wiley, Chichester, UK.
 }
 \author{ 
 Florent Baty \email{florent.baty@gmail.com}\cr

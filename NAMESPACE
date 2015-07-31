@@ -1,6 +1,8 @@
 ### Imports
 import(stats)
-
+importFrom("grDevices", "terrain.colors")
+importFrom("graphics", "abline", "boxplot", "contour", "hist", "image",
+             "layout", "lines", "par", "plot", "points", "text")
 ### Exports
 # functions
 export(preview, overview, plotfit)

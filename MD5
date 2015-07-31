@@ -1,6 +1,6 @@
-42368aebf3823a3fad769ebe5ffbe64f *ChangeLog
-1430dbe7b9535ef9c6b776873881a871 *DESCRIPTION
-837e8f5e59b03a475e65e07a227e97c1 *NAMESPACE
+863b29c6d04802c80824570271b588e2 *ChangeLog
+c6a46237afa4ebcae202fdb3a81098d9 *DESCRIPTION
+53fce5a19277da83467b6d35af59eab8 *NAMESPACE
 a562602ddb1bf4c7721426ce4505fa58 *R/confint2.R
 28b45fa4276ebaf9c148d5510753dee6 *R/michaelismodels.R
 87dce8ac4cc84505f626c1d00f8ae956 *R/nlsBoot.R
@@ -14,8 +14,8 @@ c2892ce34d843c68c5f5bdd7593dfe6c *R/nlstools.R
 c6932bc395962db04a5b5c5d21c904f6 *data/O2K.rda
 1121faf3988c3ce87c147ae60dde4023 *data/vmkm.rda
 0ddbc672e9ac73b95035eddb14d9cfbe *data/vmkmki.rda
-6fbba2e7236c2418a7856e6cb9e9e51f *inst/CITATION
-cbc32a41b10199400f79b6c6b9355e38 *inst/NEWS
+770136b246f370a1fd8f453da1f6b5ea *inst/CITATION
+1719011986be47bff1eaed9745a95b82 *inst/NEWS
 d32239bcb673463ab874e80d47fae504 *inst/gpl-3.0.txt
 d52352d1bf54aeb59b23a8dc3ed87605 *man/L.minor.Rd
 adb334b250a2a55dd661f53039310f58 *man/O2K.Rd
@@ -28,4 +28,4 @@ f614e6b612790b8ff9a1d8e793ef1f6e *man/nlsBoot.Rd
 a792ddcbeb459c4509b9e59871ae5e83 *man/nlsJack.Rd
 ea5ec06f178d107853480f05eb6bbffd *man/nlsResiduals.Rd
 6b175455e25b014011f38ab68a5e9ab4 *man/nlstools-defunct.Rd
-c73274b4cd80e031c7fbfab32187c4ed *man/nlstools.Rd
+34eb552410b9289348baef4e5b9750ca *man/nlstools.Rd
